@@ -14,7 +14,7 @@ namespace SampleEcommerce.BasketApi.Controllers
 {
     public class BasketsController : BaseController<Basket>
     {
-        public BasketsController(IService<Basket> service) : base(service)
+        public BasketsController(IBasketService service) : base(service)
         {
         }
     }

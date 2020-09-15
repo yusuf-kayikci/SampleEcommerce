@@ -3,7 +3,7 @@ using System.Text;
 
 namespace SampleEcommerce.Core.Abstractions
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : IEntity
     {
         List<T> GetAll();
         T Get(string id);

@@ -1,15 +1,17 @@
 version: '3.4'
 
 services:
-  sampleecommerce.basketapi:
+  basketapi:
     image: ${DOCKER_REGISTRY-}sampleecommercebasketapi
     build:
       context: .
       dockerfile: SampleEcommerce.BasketApi/Dockerfile
-
-  sampleecommerce.productapi:
-    image: ${DOCKER_REGISTRY-}sampleecommerceproductapi
-    build:
-      context: .
-      dockerfile: SampleEcommerce.ProductApi/Dockerfile
+    ports:
+      - 9393:80
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
 

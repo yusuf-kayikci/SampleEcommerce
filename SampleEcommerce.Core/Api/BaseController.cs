@@ -9,7 +9,7 @@ namespace SampleEcommerce.Core.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public abstract class BaseController<T> : ControllerBase where T : BaseEntity
+    public abstract class BaseController<T> : ControllerBase where T : IEntity
     {
 
         private readonly IService<T> _service;

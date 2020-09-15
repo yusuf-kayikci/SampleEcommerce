@@ -17,8 +17,8 @@ namespace SampleEcommerce.ProductApi.Extentions
         {
             services.AddSingleton<IMongoConnectionProvider, MongoConnectionProvider>();
             //Generic dependency injenction
-            services.AddSingleton<IRepository<Product>, ProductRepository>();
-            services.AddSingleton<IService<Product>, ProductService>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<IProductService, ProductService>();
         }
     }
 }

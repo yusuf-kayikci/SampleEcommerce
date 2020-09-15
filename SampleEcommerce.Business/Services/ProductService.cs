@@ -9,13 +9,22 @@ namespace SampleEcommerce.Business.Services
 {
     public class ProductService : BaseService<Product> , IProductService
     {
-        public ProductService(IRepository<Product> repository) : base(repository)
+        private readonly IProductRepository _repository;
+        public ProductService(IProductRepository repository) : base(repository)
         {
+            _repository = repository;
         }
 
-        public bool CheckStock()
+        public bool IsValidEndDateForSell(string id)
         {
-            throw new NotImplementedException();
+            var product = base.GetById(id);
+            return (product?.SellEndDate != null) ? DateTime.Now < DateTime.Parse(product.SellEndDate)  : true;
+        }
+
+        public bool IsAvailableInStock(string id)
+        {
+            var product = base.GetById(id);
+            return product?.Amount > 0;
         }
     }
 }

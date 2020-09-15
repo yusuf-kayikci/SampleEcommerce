@@ -8,5 +8,6 @@ namespace SampleEcommerce.Business.Services
 {
     public interface IBasketService : IService<Basket>
     {
+        Basket GetBasketByProductId(string productId);
     }
 }

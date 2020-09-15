@@ -8,5 +8,8 @@ namespace SampleEcommerce.Business.Services
 {
     public interface IProductService : IService<Product>
     {
+        bool IsAvailableInStock(string id);
+        bool IsValidEndDateForSell(string id);
+
     }
 }

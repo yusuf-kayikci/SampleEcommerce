@@ -8,5 +8,7 @@ namespace SampleEcommerce.Data.Repository
 {
     public interface IBasketRepository : IRepository<Basket>
     {
+        Basket GetByProductId(string productId);
+
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SampleEcommerce.Core.Abstractions
 {
-    public interface IService<T>
+    public interface IService<T> where T : IEntity
     {
         void Add(T entity);
         IEnumerable<T> GetAll();

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using SampleEcommerce.BasketApi.Extentions;
 using SampleEcommerce.Data.DbConnection;
 
@@ -30,6 +31,11 @@ namespace SampleEcommerce.BasketApi
             services.Configure<MongoConnectionSettings>(Configuration.GetSection("MongoConnectionSettings"));
             services.RegisterServices();
             services.AddControllers();
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +46,7 @@ namespace SampleEcommerce.BasketApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
+            app.UseMiddlewares();
 
             app.UseRouting();
 

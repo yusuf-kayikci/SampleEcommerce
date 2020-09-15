@@ -1,4 +1,5 @@
-﻿using SampleEcommerce.Data.DbConnection;
+﻿using MongoDB.Driver;
+using SampleEcommerce.Data.DbConnection;
 using SampleEcommerce.Data.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,11 @@ namespace SampleEcommerce.Data.Repository
     {
         public BasketRepository(IMongoConnectionProvider provider) : base(provider)
         {
+        }
+
+        public Basket GetByProductId(string productId)
+        {
+            return _collection.Find(e => e.ProductId == productId).SingleOrDefault();
         }
     }
 }

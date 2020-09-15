@@ -1,5 +1,5 @@
 ﻿using SampleEcommerce.Core.Abstractions;
-using SampleEcommerce.Core.Entity;
+using SampleEcommerce.Core.Exceptions;
 using SampleEcommerce.Data.Entity;
 using SampleEcommerce.Data.Repository;
 using System;
